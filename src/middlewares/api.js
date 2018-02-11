@@ -8,7 +8,7 @@ export default (store) => (next) => (action) => {
                 // обратно получаем id
                 setTimeout(() => {
                     resolve(Guid.newGuid());
-                }, 1000);
+                }, 100);
 
             });
         };
