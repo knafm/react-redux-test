@@ -1,0 +1,19 @@
+.todo-common-menu {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.todo-common-menu__sort {
+    position: absolute;
+    right: 0px;
+    bottom: -5px;
+}
+
+.todo-common-menu__sort span {
+    margin-left: 5px;
+}
+
+.todo-list-wrapper {
+    min-width: 320px;
+    max-width: 500px;
+}

@@ -1,0 +1,20 @@
+.todo-item {
+    border: #393939 solid 1px;
+    margin-bottom: 5px;
+}
+
+.todo-item__title {
+    position: relative;
+    border-bottom: black dotted 1px;
+    margin: 0 2px;
+}
+
+.todo-item__title .list-menu {
+    position: absolute;
+    right: 0px;
+    bottom: -3px;
+}
+.todo-item__body {
+    margin: 2px;
+    font-size: small;
+}

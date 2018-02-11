@@ -1,0 +1,23 @@
+.todo-form {
+    min-width: 320px;
+    max-width: 500px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.todo-form__title {
+    position: relative;
+}
+
+.todo-menu-form__control {
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+}
+
+.todo-menu-form__control span {
+    margin-left: 5px;
+}
+
