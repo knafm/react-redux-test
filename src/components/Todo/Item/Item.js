@@ -22,14 +22,13 @@ export default function Item(props) {
                 </div>
             </div>
             <div className="todo-item__body">
-                <span>{body}</span>
+                <span>{body|| "No body."}</span>
             </div>
         </div>
     )
 }
 
-Item.prototype = {
-    key: PropTypes.number,
+Item.propTypes = {
     header: PropTypes.string,
     body: PropTypes.string,
     isFinished: PropTypes.bool,

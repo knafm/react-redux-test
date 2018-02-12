@@ -1,4 +1,4 @@
-import Guid from "../lib/guidNotForProd";
+import Guid from "../utils/guidNotForProd";
 
 export default (store) => (next) => (action) => {
     if (action.type === "addTodo") {
@@ -12,7 +12,6 @@ export default (store) => (next) => (action) => {
 
             });
         };
-        //todo обработчик reject
         asyncReturnId().then((res)=>{
             next({
                 payload: {

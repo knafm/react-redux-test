@@ -29,16 +29,17 @@ class Form extends Component {
 
 
     okHandler() {
-
+        const {title,body} = this.state;
+        const {id} = this.props;
         (this.props.isEdit) ?
             this.props.modifyTodoById({
-                id: this.props.id,
-                title: this.state.title,
-                body: this.state.body
+                id: id,
+                title: title,
+                body: body
             }) :
             this.props.addTodo({
-                title: this.state.title,
-                body: this.state.body
+                title: title,
+                body: body
             });
 
         this.props.hideForm();
@@ -52,16 +53,25 @@ class Form extends Component {
         this.props.hideForm();
     }
 
-    componentWillMount() {
-        if (this.props.isEdit) {
-            const {title, body} = this.props.todoList.reduce((res, todo) => {
-                return (todo.id === this.props.id) ? todo : res;
+    setDefaultValues(props){
+        const {isEdit, todoList, id} = props;
+        if (isEdit) {
+            const {title, body} = todoList.reduce((res, todo) => {
+                return (todo.id === id) ? todo : res;
             }, {title: "", body: ""});
             this.setState({
                 title: title,
                 body: body
             })
         }
+    }
+
+    componentWillMount() {
+        this.setDefaultValues(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setDefaultValues(nextProps)
     }
 
     render() {
@@ -97,7 +107,7 @@ class Form extends Component {
 Form.propTypes = {
     isEdit: PropTypes.bool,
     isAdd: PropTypes.bool,
-    id: PropTypes.number,
+    id: PropTypes.string,
     hideForm: PropTypes.func
 };
 

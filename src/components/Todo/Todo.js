@@ -19,14 +19,18 @@ export default class Todo extends Component {
 
     setEdit = (id) => () => {
         this.setState({
+            isAdd: false,
             isEdit: true,
             editId: id,
         })
     };
 
     setAdd() {
+        const {isAdd} = this.state;
         this.setState({
-            isAdd: true
+            isEdit: false,
+            editId: null,
+            isAdd: !isAdd
         })
     }
 

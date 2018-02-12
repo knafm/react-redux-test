@@ -1,7 +1,7 @@
 import {applyMiddleware, createStore} from 'redux';
 import {rootReducer} from "../reducers/index";
 import api from "../middlewares/api";
-import {supportsLocalStorage} from "../lib/localStorageCheck";
+import {supportsLocalStorage} from "../utils/localStorageCheck";
 
 const middlewares = applyMiddleware(api);
 export const store = createStore(rootReducer, middlewares);

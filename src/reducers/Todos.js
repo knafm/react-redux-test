@@ -1,5 +1,5 @@
 import testData from '../fixtures/testData';
-import {supportsLocalStorage} from "../lib/localStorageCheck";
+import {supportsLocalStorage} from "../utils/localStorageCheck";
 
 // Проверка на наличие localStorage , данных в нем , если нет ничего - то тестовые данные
 const initState = (supportsLocalStorage() && localStorage.hasOwnProperty("todoStorage"))?

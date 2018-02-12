@@ -34,14 +34,14 @@ class List extends Component {
 
 
     render() {
-        const sortOrder = (this.state.isDescSort) ? <span>Sort order: desc</span> : <span>Sort: asc</span>;
+        const sortOrder = (this.state.isDescSort) ? <span>Sort order: desc</span> : <span>Sort order: asc</span>;
         const itemList = this.props.todoList.sort((prev, next) => {
             return (this.state.isDescSort) ?
                 ((prev.title < next.title) ? -1 : (prev.title > next.title) ? 1 : 0) :
                 ((prev.title > next.title) ? -1 : (prev.title < next.title) ? 1 : 0)
         })
-            .map((item) => {
-                return <Item key={item.id}
+            .map((item, index) => {
+                return <Item key={index}
                              header={item.title}
                              body={item.body}
                              isFinished={item.isFinished}
