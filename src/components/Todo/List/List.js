@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import './List.css';
-import Item from "../Item/Item";
-import {connect} from "react-redux";
+import Item from '../Item/Item';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {deleteTodoById, finishTodoById} from "../../../ac/todo";
-import add from "./add.svg"
-import sort from "./sort.svg"
+import {deleteTodoById, finishTodoById} from '../../../ac/todo';
+import add from './add.svg';
+import sort from './sort.svg';
 
 class List extends Component {
 
