@@ -4,7 +4,6 @@ pipeline {
         stage('Build') {
             agent any
             steps {
-                checkout scm
                 bat 'npm i'
                 bat 'npm run build'
             }
