@@ -5,36 +5,14 @@ pipeline {
             agent any
             steps {
                 checkout scm
-                sh 'make'
-                stash includes: '**/target/*.jar', name: 'app'
+                bat 'npm i'
+                bat 'npm run build'
             }
         }
-        stage('Test on Linux') {
-            agent {
-                label 'linux'
-            }
+        stage('Test') {
+            agent any
             steps {
-                unstash 'app'
-                sh 'make check'
-            }
-            post {
-                always {
-                    junit '**/target/*.xml'
-                }
-            }
-        }
-        stage('Test on Windows') {
-            agent {
-                label 'windows'
-            }
-            steps {
-                unstash 'app'
-                bat 'make check'
-            }
-            post {
-                always {
-                    junit '**/target/*.xml'
-                }
+                bat 'npm run test'
             }
         }
     }
