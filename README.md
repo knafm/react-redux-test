@@ -6,6 +6,9 @@
 npm run start
 ## Тесты 
 npm run test
+* e2e
+npm run start
+npx cypress open
 
 ## Изначальное задание 
 [task.md](./task.md "Изначальное задание")

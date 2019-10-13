@@ -1,0 +1,6 @@
+{
+  "projectKey": "2d427c53-0299-4776-a1cf-ae53bdf0a4dc",
+  "baseUrl": "http://localhost:3000",
+  "integrationFolder": "cypress/e2e",
+  "projectId": "xg5rao"
+}
