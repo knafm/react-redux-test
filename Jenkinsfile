@@ -4,14 +4,14 @@ pipeline {
         stage('Build') {
             agent any
             steps {
-                bat 'npm i'
-                bat 'npm run build'
+                sh 'npm i'
+                sh 'npm run build'
             }
         }
         stage('Test') {
             agent any
             steps {
-                bat 'npm run test'
+                sh 'npm run test'
             }
         }
     }
