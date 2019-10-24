@@ -10,8 +10,8 @@ pipeline {
         }
         stage('Test') {
             agent any
-            input 'run tests ?'
             steps {
+                input 'run tests ?'
                 sh 'npm run test'
             }
         }
