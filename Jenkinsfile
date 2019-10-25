@@ -10,7 +10,9 @@ pipeline {
         }
         stage('Test') {
             agent any
-            input 'test input'
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
             steps {
                 sh 'CI=true npm test'
             }
