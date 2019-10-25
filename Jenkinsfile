@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Test') {
             agent any
-            imput 'test input'
+            input 'test input'
             steps {
                 sh 'CI=true npm test'
             }
