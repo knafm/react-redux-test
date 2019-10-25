@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
             agent any
             steps {
-                sh 'jest --env-jsdom -ci'
+                sh 'CI=true npm test'
             }
         }
     }
