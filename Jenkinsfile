@@ -11,9 +11,22 @@ pipeline {
         stage('Test') {
             agent any
             steps {
-                input 'run tests ?'
-                sh 'npm run test'
+                sh 'jest --env-jsdom -ci'
             }
         }
+    }
+    post { 
+        success { 
+            echo 'I will always say Hello again!'
+        }
+    }
+}
+pipeline {
+    agent none
+    triggers {
+        upstream (upstreamProjects: delivery/build )
+    }
+    stages {
+
     }
 }
