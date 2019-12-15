@@ -17,7 +17,7 @@ pipeline {
       steps {
         script {
         try{
-          sh 'npm run test'
+          sh 'npm run test:unit'
           } catch (err) {
           currentBuild.result = 'UNSTABLE'
           }
