@@ -1,4 +1,6 @@
-node {
+pipeline {
+  agent any
+
   tools {
     nodejs 'node-js-12'
   }
@@ -48,18 +50,4 @@ node {
       }
     }
   }
-}
-def uploadArtifact(server) {
-  def uploadSpec = """{
-            "files": [
-              {
-                "pattern": "continuous-test-code-coverage-guide*.tgz",
-                "target": "npm-stable/"
-              }
-           ]
-          }"""
-  server.upload(uploadSpec)
-  def buildInfo = Artifactory.newBuildInfo()
-  server.upload spec: uploadSpec, buildInfo: buildInfo
-  server.publishBuildInfo buildInfo
 }
