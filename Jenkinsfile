@@ -20,12 +20,13 @@ pipeline {
           sh 'npm run test:unit'
           } catch (err) {
           currentBuild.result = 'UNSTABLE'
+          print "catch unstable"
           }
         }
       }
       post {
         always {
-          junit './coverage/junit/junit.xml'
+          junit './junit.xml'
         }
       }
     }
