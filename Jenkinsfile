@@ -10,7 +10,6 @@ pipeline {
         script {
           sh 'npm install'
           sh 'ls -la'
-          sh 'ls ./coverage -la'
         }
       }
     }
