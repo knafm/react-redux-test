@@ -16,7 +16,7 @@ pipeline {
         script {
         try{
           sh 'npm run test'
-          } catch {
+          } catch (err) {
           currentBuild.result = 'UNSTABLE'
           }
         }
