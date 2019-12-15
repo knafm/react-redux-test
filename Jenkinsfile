@@ -1,7 +1,7 @@
 #!/bin/groovy
 pipeline {
   tools {
-    nodejs "node-version-installed"
+    nodejs 'node-js-12'
   }
   stages {
     stage('Startup') {
