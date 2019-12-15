@@ -29,7 +29,6 @@ pipeline {
         always {
         sh 'ls -la'
           junit './junit.xml'
-          currentBuild.result = 'UNSTABLE'
         }
       }
     }
