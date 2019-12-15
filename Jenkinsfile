@@ -1,36 +1,66 @@
+#!/bin/groovy
 pipeline {
-    agent none
-    stages {
-        stage('Build') {
-            agent any
-            steps {
-                sh 'npm i'
-                sh 'npm run build'
-            }
+  tools {
+    nodejs 'default-nodejs'
+  }
+  stages {
+    stage('Startup') {
+      steps {
+        script {
+          sh 'npm install'
         }
-        stage('Test') {
-            agent any
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-            }
-            steps {
-                sh 'CI=true npm test'
-            }
-        }
+      }
     }
-    post { 
-        success { 
-            echo 'I will always say Hello again!'
+    stage('Test') {
+      steps {
+        script {
+        try{
+          sh 'npm run test'
+          } catch {
+          currentBuild.result = 'UNSTABLE'
+          }
         }
+      }
+      post {
+        always {
+          junit 'output/coverage/junit/junit.xml'
+        }
+      }
     }
+    stage('Build') {
+      steps {
+        script {
+          sh 'npm start'
+          sh 'npm pack'
+        }
+      }
+    }
+    stage('Deploy') {
+      when {
+        expression {
+          currentBuild.result == null || currentBuild.result == 'SUCCESS'
+        }
+      }
+      steps {
+        script {
+          def server = Artifactory.server 'My_Artifactory'
+          uploadArtifact(server)
+        }
+      }
+    }
+  }
 }
-pipeline {
-    agent none
-    triggers {
-        upstream (upstreamProjects: delivery/build )
-    }
-    stages {
-
-    }
+def uploadArtifact(server) {
+  def uploadSpec = """{
+            "files": [
+              {
+                "pattern": "continuous-test-code-coverage-guide*.tgz",
+                "target": "npm-stable/"
+              }
+           ]
+          }"""
+  server.upload(uploadSpec)
+  def buildInfo = Artifactory.newBuildInfo()
+  server.upload spec: uploadSpec, buildInfo: buildInfo
+  server.publishBuildInfo buildInfo
 }

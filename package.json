@@ -7,21 +7,22 @@
     "lodash": "^4.17.15",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.12.0",
     "react-redux": "^5.0.7",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "^3.3.0",
     "redux": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "CI=true &&react-scripts test --env=jsdom",
+    "test:unit": "CI=true &&react-scripts test --env=jsdom --coverage --watchAll=false",
+    "test:integration": "",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "@testing-library/cypress": "^5.0.2",
     "cypress-testing-library": "^4.0.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.9.1"
   },
   "browserslist": {
