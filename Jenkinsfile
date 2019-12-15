@@ -9,6 +9,7 @@ pipeline {
       steps {
         script {
           sh 'npm install'
+          sh 'ls -la'
         }
       }
     }
@@ -24,7 +25,7 @@ pipeline {
       }
       post {
         always {
-          junit 'output/coverage/junit/junit.xml'
+          junit './coverage/junit/junit.xml'
         }
       }
     }
