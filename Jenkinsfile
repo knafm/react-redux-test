@@ -1,5 +1,4 @@
-#!/bin/groovy
-pipeline {
+node {
   tools {
     nodejs 'node-js-12'
   }
